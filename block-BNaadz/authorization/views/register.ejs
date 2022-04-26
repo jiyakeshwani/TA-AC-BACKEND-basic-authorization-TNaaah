@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>authorization</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex container">
+        <a href="/blog/routes/index.js" class="brand">Blog App</a>
+
+        <%if(user){ %>
+        <span><%= user.name%></span>
+        <nav>
+          <a href="/article/myarticles">My Articles</a>
+          <a href="/article/new">Add Article</a>
+          <a href="/users/logout">Logout</a>
+        </nav>
+        <% }else { %>
+        <nav>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        </nav>
+        <% } %>
+      </div>
+    </header>
+
+    <main class="container">
+      <form class="form" action="/register" method="post">
+        <input type="text" name="name" placeholder="Enter your Name" />
+
+        <input type="email" name="email" placeholder="Enter your email" />
+        <input type="password" name="password" placeholder="Enter password" />
+        <input type="text" name="city" placeholder="Enter City" />
+        <button>Register</button>
+      </form>
+    </main>
+  </body>
+</html>

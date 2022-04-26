@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>authorization</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex container">
+        <a href="/blog/routes/index.js" class="brand">Blog App</a>
+
+        <%if(user){ %>
+        <span><%= user.name%></span>
+        <nav>
+          <a href="/article/myarticles">My Articles</a>
+          <a href="/article/new">Add Article</a>
+          <a href="/users/logout">Logout</a>
+        </nav>
+        <% }else { %>
+        <nav>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        </nav>
+        <% } %>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div>
+          <h3><%= articles.author %></h3>
+          <h2><%= articles.title %></h2>
+          <p><%= articles.description %></p>
+          <div class="flex">
+            <h4>Likes: <%= article.likes %></h4>
+            <a href="/article/<%= articles.id %>/increment">
+              <button>Like</button>
+            </a>
+            <a href="/article/<%= articles.id %>/decrement">
+              <button>Dislike</button>
+            </a>
+          </div>
+        </div>
+        <div>
+          <a href="/article/<%= articles.id %>/edit">
+            <button>Edit</button>
+          </a>
+          <a href="/articles/<%= articles.id %>/delete">
+            <button>Delete</button>
+          </a>
+        </div>
+        <div>
+          <h2>Comments</h2>
+          <div>
+            <% articles.comments.forEach(comments => { %>
+            <div>
+              <p><%= comments.comment %></p>
+              <div>
+                <a href="/comment/<%= comments.id %>/edit">
+                  <button>Edit</button>
+                </a>
+                <a href="/comment/<%= comments.id %>/delete">
+                  <button>Delete</button>
+                </a>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+
+          <div>
+            <form action="/article/<%= articles.id %>/comment" method="post">
+              <textarea
+                name="comment"
+                rows="5"
+                placeholder="Add Comment"
+              ></textarea>
+              <input type="submit" value="Add Comment" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

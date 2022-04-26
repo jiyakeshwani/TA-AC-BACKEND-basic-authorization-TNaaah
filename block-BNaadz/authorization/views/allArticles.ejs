@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>authorization</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex container">
+        <a href="/blog/routes/index.js" class="brand">Blog App</a>
+
+        <%if(user){ %>
+        <span><%= user.name%></span>
+        <nav>
+          <a href="/article/myarticles">My Articles</a>
+          <a href="/article/new">Add Article</a>
+          <a href="/users/logout">Logout</a>
+        </nav>
+        <% }else { %>
+        <nav>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        </nav>
+        <% } %>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <h2>Articles</h2>
+        <div>
+          <% articles.forEach(article => { %>
+          <h3><%= article.title %></h3>
+          <p><%= article.description %></p>
+          <a href="/articles/<%= article._id %>"> Show More </a>
+          <% }) %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
