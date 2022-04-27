@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>podcast</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex container">
+        <a href="" class="brand">podcast App</a>
+
+        <nav>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>Podcasts</h2>
+        <div>
+          <% podcast.forEach(article => { %>
+          <h3><%= podcast.title %></h3>
+          <p><%= podcast.description %></p>
+          <a href="/admin/<%= admin._id %>"> Show More </a>
+          <% }) %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
