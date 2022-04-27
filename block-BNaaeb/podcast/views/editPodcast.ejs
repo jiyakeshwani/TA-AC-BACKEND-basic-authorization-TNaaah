@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>podcast</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="flex container">
+        <a href="" class="brand">podcast App</a>
+
+        <nav>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <form class="form" action="/admin/<%= admin.id %>" method="post">
+        <input type="text" name="title" placeholder="title" />
+        <textarea
+          name="description"
+          cols="30"
+          rows="10"
+          placeholder="description"
+        ></textarea>
+        <button>Update podcast</button>
+      </form>
+    </main>
+  </body>
+</html>
